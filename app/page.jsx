@@ -1,10 +1,10 @@
 
 export default function Home() {
   return (
-      <main className="home">
+      <div className="home">
         <h1 className="text-center">
-          This is Page Section
+          This is Home Component
         </h1>
-      </main>
+      </div>
   )
 }

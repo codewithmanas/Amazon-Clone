@@ -1,6 +1,5 @@
 
 import "@styles/globals.css";
-import Header from "@components/Header";
 import Head from "next/head";
 
 export const metadata = {
@@ -16,10 +15,7 @@ export default function RootLayout({ children }) {
           <meta name="description" content={metadata.description} />
       </Head>
       <body>
-        <main className="app">
-          <Header />
           {children}
-        </main>
       </body>
     </html>
   )

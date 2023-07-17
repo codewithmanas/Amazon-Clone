@@ -1,10 +1,19 @@
+import Product from "./Product"
 
 function ProductFeed({products}) {
   return (
-    <div>
-        <h1>Product Feed</h1>
-        {products.map(item => (
-          <p key={item.id}>{item.id}.{"  "}{item.title}</p>
+    <div className="flex items-center flex-wrap">
+        {products.map(({id, title, price, description, category, image, rating}) => (
+          <Product
+                key={id}
+                id={id}
+                title={title}
+                price={price}
+                description={description}
+                category={category}
+                image={image}
+                rating={rating}
+           />
         ))}
     </div>
   )

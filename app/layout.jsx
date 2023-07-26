@@ -1,6 +1,8 @@
 
+import AuthProvider from "@components/AuthProvider";
 import "@styles/globals.css";
 import Head from "next/head";
+
 
 export const metadata = {
   title: 'Amazon Clone',
@@ -15,7 +17,9 @@ export default function RootLayout({ children }) {
           <meta name="description" content={metadata.description} />
       </Head>
       <body>
+        <AuthProvider>
           {children}
+        </AuthProvider>
       </body>
     </html>
   )

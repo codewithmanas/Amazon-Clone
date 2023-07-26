@@ -1,3 +1,5 @@
+"use client";
+
 import Image from 'next/image';
 import React from 'react';
 import {
@@ -6,8 +8,19 @@ import {
   ShoppingCartIcon
 } from "@heroicons/react/outline";
 
+import { signIn, signOut, useSession } from "next-auth/react"
+
+
 
 function Header() {
+    const { data: session } = useSession({})
+    // console.log(session);
+    const fullUserName = session?.user?.name;
+    const firstName =fullUserName ? fullUserName.slice(0,5) : "";
+    // console.log(firstName);
+
+
+
   return (
     <header className="header">
       <div className="header__container">
@@ -34,8 +47,8 @@ function Header() {
 
           {/* Right Header */}
           <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
-              <div className="link">
-                  <p>Hello, Manas</p>
+              <div onClick={session ? signOut : signIn} className="link">
+                  <p>Hello, { session ? `${firstName}` : "SignIn"}</p>
                   <p className="font-extrabold md:text-sm">Account & Lists</p>
               </div>
 

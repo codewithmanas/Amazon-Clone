@@ -30,7 +30,7 @@ function Product({id, title, price, description, category, image, rating}) {
   }, []);
 
   const addItemToCart = () => {
-    console.log("addItemToCart Called");
+    // console.log("addItemToCart Called");
     const product = {id, title, price, description, category, image, rating};
     dispatch(addToCart(product));
   }

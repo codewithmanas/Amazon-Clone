@@ -14,7 +14,7 @@ import { signIn, signOut, useSession } from "next-auth/react"
 // only page router, not app router.
 import { useRouter } from 'next/navigation'
 // import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { selectItems } from '@redux/features/cart/cartSlice';
+// import { selectItems } from '@redux/features/cart/cartSlice';
 import { useSelector } from 'react-redux';
 
 

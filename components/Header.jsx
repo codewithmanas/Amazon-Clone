@@ -11,8 +11,11 @@ import {
 import { signIn, signOut, useSession } from "next-auth/react"
 // import { useRouter } from 'next/router'; 
 // This doesn't work because it supports
-// only page router not app router.
+// only page router, not app router.
 import { useRouter } from 'next/navigation'
+// import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { selectItems } from '@redux/features/cart/cartSlice';
+import { useSelector } from 'react-redux';
 
 
 
@@ -35,6 +38,12 @@ function Header() {
       router.push('/');
     }
 
+
+    const items = useSelector(state => state.cart.items)
+
+    // Alternative way
+    // This is for imported selectItems function from cartSlice
+    // const items = useSelector(selectItems)
   return (
     <header className="header">
       <div className="header__container">
@@ -77,7 +86,7 @@ function Header() {
               </div>
 
               <div className="relative link flex items-center" onClick={cartButtonClick}>
-                <span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-bold">0</span>
+                <span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-bold">{items.length}</span>
               <ShoppingCartIcon className="h-10" />
               <p className="hidden md:inline font-extrabold md:text-sm mt-2">Cart</p>
               </div>

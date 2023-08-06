@@ -4,11 +4,16 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import { StarIcon } from "@heroicons/react/solid";
 import primeLogo from "@assets/images/prime_logo.jpg";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@redux/features/cart/cartSlice";
 
 const MIN_RATING = 1;
 const MAX_RATING = 5;
 
 function Product({id, title, price, description, category, image, rating}) {
+
+  // const items = useSelector(state => state.cart.items)
+  const dispatch = useDispatch();
 
   const [starRating, setStarRating] = useState(null);
   const [hasPrime, setHasPrime] = useState(false);
@@ -23,6 +28,12 @@ function Product({id, title, price, description, category, image, rating}) {
     setStarRating(result);
     setHasPrime(Math.random() < 0.5);
   }, []);
+
+  const addItemToCart = () => {
+    console.log("addItemToCart Called");
+    const product = {id, title, price, description, category, image, rating};
+    dispatch(addToCart(product));
+  }
 
   return (
     <div className="relative flex flex-col m-5 bg-white z-30 p-10">
@@ -57,7 +68,7 @@ function Product({id, title, price, description, category, image, rating}) {
           </div>
         )}
 
-        <button className="mt-auto button">Add to Cart</button>
+        <button onClick={addItemToCart} className="mt-auto button">Add to Cart</button>
 
         
     </div>

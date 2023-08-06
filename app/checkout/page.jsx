@@ -18,7 +18,7 @@ function page() {
               />
 
               <div className="flex flex-col p-5 space-y-10 bg-white">
-                <h1 className="text-3xl border-b pb-4">Your Shopping Basket</h1>
+                <h1 className="text-3xl border-b pb-4">Your Shopping Cart</h1>
               </div>
 
             </div>
